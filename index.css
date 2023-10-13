@@ -9,7 +9,9 @@
 :root {
     --playerX: rgb(66, 167, 250);
     --playerO: #ff0000;
+    --tie: #efff63;
     --siteFont: 'Roboto', sans-serif;
+    --displayFontSizes: 1.5rem;
 }
 
 body {
@@ -103,11 +105,29 @@ h1 {
 
 .display-player {
     font-family: var(--siteFont);
-    font-size: 1.5rem;
+    font-size: var(--displayFontSizes);
     padding: 5rem 5rem;
-    color: var(--playerO);
+    color: var(--playerX);
 }
 
 .display-current-player {
     margin-top: 3.5rem;
+}
+
+.scoreboard {
+    font-family: var(--siteFont);
+    font-size: var(--displayFontSizes);
+    margin-top: 2.5rem;
+}
+
+.player-x-win-count {
+    color: var(--playerX);
+}
+
+.player-o-win-count {
+    color: var(--playerO);
+}
+
+.tie-count {
+    color: var(--tie);
 }
