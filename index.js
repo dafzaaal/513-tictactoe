@@ -55,15 +55,22 @@
 
 
 
-          * Next we need some helper methods to handle some in game checking/updating the game
+          --- Defining Helper Methods ---
+
+            * Next we need some helper methods to handle some in game checking/updating the game
 
             1. the first would be a function which when given a tile is used to check if that tile is empty which will be used to validate a user input
             2. the next would be a function which updates the board w/ the player symbol
             3. the third helper function would be used to change the current player display text so if the game starts on player X's turn, it'll say that on the website
                but after player X makes a move, the text should change to "Player O'x Turn"
-            4. the fourth function announces which player has won
+            4. the fourth function announces which player has won using either if-statements or switch-case statements for if Player X wins, or Player O wins, or if its a tie 
             5. the next function would update the score count, so if player X won, increment their total wins +1, vis versa for Player O and also in the event it ties
-
+            6. this function will validate the results, after every play, we'll call this function which will loop through the array of tiles and checks if a three-in-a-col/row/diagonal
+               is found and sets the appropriate variables (ex. set player won text to whoever won, set game end flag, etc.)
+            7. the next function which will take a tile and the array index, this function will  be used to update the array with the players symbol, this function will be called when a player
+               makes a turn, it will use the previous helper method which we defined where it takes a tile and checks if that tile is empty, if it is, we know it can be a played tile and we update 
+               both the innerHTML of that specific tile to the player's symbol and also update the array, to make sure this works, make sure you add an event listener for ALL TILES
+            8. the last helper method would be used to reset the board, inside the method just reset all values back to their default state EXCEPT the scoreboard 
 
     })
 
