@@ -117,7 +117,7 @@ h1 {
 .scoreboard {
     font-family: var(--siteFont);
     font-size: var(--displayFontSizes);
-    margin-top: 2.5rem;
+    margin-top: 3.5rem;
     display: flex;
     flex-direction: row;
     gap: 2.5rem;
