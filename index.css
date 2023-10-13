@@ -118,6 +118,11 @@ h1 {
     font-family: var(--siteFont);
     font-size: var(--displayFontSizes);
     margin-top: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .player-x-win-count {
@@ -130,4 +135,8 @@ h1 {
 
 .tie-count {
     color: var(--tie);
+}
+
+.player-x-win-count, .player-o-win-count, .tie-count {
+    margin-left: 5px;
 }
