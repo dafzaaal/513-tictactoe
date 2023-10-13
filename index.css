@@ -6,6 +6,11 @@
     UCID: 30063067
 */
 
+:root {
+    --playerX: rgb(66, 167, 250);
+    --playerO: #ff0000;
+    --siteFont: 'Roboto', sans-serif;
+}
 
 body {
     color: white;
@@ -89,9 +94,20 @@ h1 {
 }
 
 .player1 {
-    color: red;
+    color: var(--playerO);
 }
 
 .player2 {
-    color: navy;
+    color: var(--playerX);
+}
+
+.display-player {
+    font-family: var(--siteFont);
+    font-size: 1.5rem;
+    padding: 5rem 5rem;
+    color: var(--playerO);
+}
+
+.display-current-player {
+    margin-top: 3.5rem;
 }
