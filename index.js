@@ -4,6 +4,39 @@
     Date: Oct. 16th, 2023
 */
 
+// JS script loads HTML body
+window.addEventListener('DOMContentLoaded', () => {
+
+    // Initialize variables
+    const tiles = Array.from(document.querySelectorAll('.tile'));
+    const playerDisplay = document.querySelector('.display-player');
+    const resetButton = document.querySelector('#reset');
+    const announcer = document.querySelector('.announcer');
+
+    // initialize variables for board, current player and game state
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let currentPlayer = 'X';
+    let isGameActive = true;
+
+    // Winning conditions
+    const PX_WINS = "Player X Won!";
+    const PO_WINS = "Player O Won!";
+    const Tie = "It's a Tie!";
+
+    // show all possible win conditions
+    const winConditions = [
+        [0, 1, 2], // top row
+        [3, 4, 5], // middle row
+        [6, 7, 8], // bottom row
+        [0, 3, 6], // left col
+        [1, 4, 7], // middle col
+        [2, 5, 8], // right col
+        [0, 4, 8], // left diagonal
+        [2, 4, 6]  // right diagonal
+    ];
+});
+
+
 /* 
 
     * this is where all the code goes, this line (line #12) ensures the code inside runs ONLY when after the browser loads the HTML
