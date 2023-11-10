@@ -48,6 +48,20 @@ window.addEventListener('DOMContentLoaded', () => {
       playerDisplay.classList.add(`player${currentPlayer}`);
   }
 
+  const announce = (type) => {
+    switch(type){
+       case PLAYERO_WON:
+            announcer.innerHTML = 'Player <span class="playerO">O</span> Won';
+            break;
+       case PLAYERX_WON:
+            announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
+            break;
+       case TIE:
+            announcer.innerText = 'Tie';
+        }
+    announcer.classList.remove('hide');
+};
+
 
   tiles.forEach( (tile, index) => {
     tile.addEventListener('click', () => userAction(tile, index));
@@ -69,6 +83,8 @@ const resetBoard = () => {
       tile.classList.remove('playerO');
   });
 }
+
+resetButton.addEventListener('click', resetBoard);
 
 
 
