@@ -59,30 +59,26 @@ window.addEventListener('DOMContentLoaded', () => {
       board.classList.toggle('active');
     });
 
-    // function which takes a tile and if that tile is empty, it places an X there
-    function placeX(event) {
-      const tile = event.target;
-      if(tile.textContent === '') {
-        tile.textContent = 'X';
-      }
-    }
 
-    // function which takes a tile and if that tile is empty it places an X there
-    function placeO(event) {
+    /* 
+      helper method which places mark on board, this method is called when a player clicks on a tile
+      it places the current player's symbol on the board and also updates the array and applies 
+      the appropriate css class to the tile
+    */
+
+    function placeMark(event) {
       const tile = event.target;
       if(tile.textContent === '') {
         tile.textContent = currentPlayer;
+        tile.classList.remove('x', 'o');
+        tile.classList.add(currentPlayer.toLowerCase());
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
       }
     }
 
     tiles.forEach(tile => {
       if(currentPlayer === 'X') {
-        tile.addEventListener('click', placeX);
-        currentPlayer = 'O';
-      }
-      else {
-        tile.addEventListener('click', placeO);
-        currentPlayer = 'X';
+        tile.addEventListener('click', placeMark);
       }
     });
 

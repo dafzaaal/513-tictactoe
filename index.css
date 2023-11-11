@@ -1,6 +1,6 @@
 /* 
     Course: SENG 513
-    Date: Oct. 16th, 2023
+    Date: Nov. 13th, 2023
     Assignment #1
     Name: Dawood Afzaal
     UCID: 30063067
@@ -77,6 +77,23 @@ h1 {
     align-items: center;
     font-size: 50px;
     cursor: pointer;
+}
+
+.container.active .tile:hover::before {
+    content: 'X';
+    color: var(--playerX);
+    font-family: var(--siteFont);
+}
+
+
+.x {
+    font-family: var(--siteFont);
+    color: var(--playerX);
+}
+
+.o {
+    color: var(--playerO);
+    font-family: var(--siteFont);
 }
 
 #instructions {
