@@ -128,11 +128,12 @@ h1 {
     color: var(--playerX);
 }
 
-.display-player {
+#display-player {
     font-family: var(--siteFont);
     font-size: var(--displayFontSizes);
-    padding: 5rem 5rem;
+    padding: 1.5rem 1.5rem;
     color: var(--playerX);
+    display: none;
 }
 
 .display-current-player {

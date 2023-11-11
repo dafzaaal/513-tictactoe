@@ -35,6 +35,25 @@ window.addEventListener('DOMContentLoaded', () => {
         [2, 4, 6]  // right diagonal
     ];
 
+    // getting the instructions on how to play the game in the event a player clicks on the how to play button
+    document.getElementById('how-to-play-btn').addEventListener('click', () => {
+        let instructions = document.getElementById('instructions');
+        instructions.style.display = 'block';
+    });
+
+    // otherwise if the user has opened the how to play pop up, when the close button is clicked the pop up closes
+    document.getElementById('close-btn').addEventListener('click', () => {
+        let instructions = document.getElementById('instructions');
+        instructions.style.display = 'none';
+    });
+
+    //when the user clicks on the play button, the game begins
+    document.getElementById('play-btn').addEventListener('click', () => {
+
+      // show which player's turn it is
+      let player = document.getElementById('display-player');
+      player.style.display = "block";
+    });
 
 
 });
