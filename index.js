@@ -1,7 +1,7 @@
 /* 
     Course: SENG 513
     Name and UCID: Dawood Afzaal (UCID: 30063067)
-    Date: Oct. 16th, 2023
+    Date: Nov. 13th, 2023
 */
 
 // JS script loads HTML body
@@ -53,7 +53,40 @@ window.addEventListener('DOMContentLoaded', () => {
       // show which player's turn it is
       let player = document.getElementById('display-player');
       player.style.display = "block";
+
+      // after the player has clicked play, toggle the hover effects for the x/o tiles
+      let board = document.querySelector('.container');
+      board.classList.toggle('active');
     });
+
+    // function which takes a tile and if that tile is empty, it places an X there
+    function placeX(event) {
+      const tile = event.target;
+      if(tile.textContent === '') {
+        tile.textContent = 'X';
+      }
+    }
+
+    // function which takes a tile and if that tile is empty it places an X there
+    function placeO(event) {
+      const tile = event.target;
+      if(tile.textContent === '') {
+        tile.textContent = currentPlayer;
+      }
+    }
+
+    tiles.forEach(tile => {
+      if(currentPlayer === 'X') {
+        tile.addEventListener('click', placeX);
+        currentPlayer = 'O';
+      }
+      else {
+        tile.addEventListener('click', placeO);
+        currentPlayer = 'X';
+      }
+    });
+
+
 
 
 });
