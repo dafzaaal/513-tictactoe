@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const playerDisplay = document.querySelector('.display-player');
   const resetButton = document.querySelector('#reset');
   const announcer = document.querySelector('.announcer');
+  let gameStatus = false;
 
   // initialize variables for board, current player and game state
   let board = ['', '', '', '', '', '', '', '', ''];
@@ -56,6 +57,9 @@ window.addEventListener('DOMContentLoaded', () => {
     // after the player has clicked play, toggle the hover effects for the x/o tiles
     let board = document.querySelector('.container');
     board.classList.toggle('active');
+
+    // set the game flag to true to show that the games begun
+    gameStatus = true;
   });
 
 
@@ -66,6 +70,10 @@ window.addEventListener('DOMContentLoaded', () => {
   */
 
   function placeMark(event) {
+
+    // checking if game is not active, if not, return
+    if(!gameStatus) return;
+
     let player = document.getElementById('display-player');
     const tile = event.target;
     if(tile.textContent === '') {
@@ -78,13 +86,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
       // check if the current player has won or if the game is a tie
       if(checkWin(currentPlayer)) {
-        let announcer = document.getElementById('announcer');
-        announcer.setInnerHTML = currentPlayer + " won!";
-        announcer.style.display = "block";
-        console.log(currentPlayer + " won!");
+        announceWinner(currentPlayer);
+        updateScoreBoard(currentPlayer);
       }
       else if(checkTie()) {
-        console.log("Tie!");
+        let score = document.querySelector('.tie-count');
+        score.textContent = parseInt(score.textContent) + 1;
       }
 
       // update the current player and the hover symbol effect
@@ -98,6 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // helper function which loops through the board array and checks if a tie has occured
   function checkTie() {
     if(board.every(tile => tile !== '')) {
+      gameStatus = false;
       return true;
     }
     return false;
@@ -111,6 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Check if the board at these indexes has the same player symbol
         if (board[a] === player && board[b] === player && board[c] === player) {
+            gameStatus = false; // Game is over
             return true; // Win condition met
         }
     }
@@ -118,10 +127,37 @@ window.addEventListener('DOMContentLoaded', () => {
 }
 
 
+function updateScoreBoard(player) {
+  // update the scoreboard
+
+  // if the player is X then increment the X scoerboard by 1
+  if(player === 'X') {
+    let score = document.querySelector('.player-x-win-count');
+    score.textContent = parseInt(score.textContent) + 1;
+  }
+  // else if the player is O then increment the scoreboard by 1
+  else if(player === 'O') {
+    let score = document.querySelector('.player-o-win-count');
+    score.textContent = parseInt(score.textContent) + 1;
+  }
+}
+
+
 
   // quick helper method which updates the board array w/ the current players symbol
   const updateBoard = (index, player) => {
     board[index] = player;
+  }
+
+  /*
+    helper function called when a player wins, takes the currents player symbol and displays it on the screen
+  */
+  function announceWinner(player) {
+    const announceSpan = document.querySelector('#announcer span');
+    announceSpan.textContent = player;
+    announceSpan.style.color = player === 'X' ? 'var(--playerX)' : 'var(--playerO)';
+    let announcer = document.getElementById('announcer');
+    announcer.style.display = 'block';
   }
 
 

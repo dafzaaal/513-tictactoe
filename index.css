@@ -106,7 +106,12 @@ h1 {
 #announcer {
     font-size: var(--displayFontSizes);
     font-family: var(--siteFont);
-    padding: rem 0rem;
+    padding: 0rem 0rem;
+    display: none;
+}
+
+#announcer span {
+    color: var(--currentPlayerColor);
 }
 
 #instructions {
