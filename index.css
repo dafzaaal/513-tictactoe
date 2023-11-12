@@ -114,6 +114,17 @@ h1 {
     color: var(--currentPlayerColor);
 }
 
+#announce-tie {
+    font-size: var(--displayFontSizes);
+    font-family: var(--siteFont);
+    padding: 0rem 0rem;
+    display: none;
+}
+
+#announce-tie span {
+    color: var(--tie);
+}
+
 #instructions {
     display: none;
     border: 1px solid white;
