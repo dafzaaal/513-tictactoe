@@ -72,10 +72,35 @@ window.addEventListener('DOMContentLoaded', () => {
         tile.textContent = currentPlayer;
         tile.classList.remove('x', 'o');
         tile.classList.add(currentPlayer.toLowerCase());
+        tile.classList.add('filled');
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        updateHoverSymbol();
       }
     }
 
+
+
+    /* 
+      helper method which updates the hover symbol effect, this method is called when a player makes a move
+      it updates the current player and also the hover symbol effect matches the current player's symbol
+    */
+    function updateHoverSymbol() {
+      document.documentElement.style.setProperty('--currentPlayerColor', currentPlayer === 'X' ? 'var(--playerX)' : 'var(--playerO)');
+
+      // set hover text content to current player symbol
+      tiles.forEach(tile => {
+        if(!tile.textContent.trim())
+          tile.setAttribute('data-hover', currentPlayer);
+      });
+    }
+
+    // call initialize initial hover effect
+    updateHoverSymbol();
+
+    /* 
+      for-each loop which iterates through all tiles and adds an event listener to each tile
+      ang places a mark on the board of the current players symbol
+    */
     tiles.forEach(tile => {
       if(currentPlayer === 'X') {
         tile.addEventListener('click', placeMark);

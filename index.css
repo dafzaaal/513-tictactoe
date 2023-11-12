@@ -12,6 +12,7 @@
     --tie: #efff63;
     --siteFont: 'Roboto', sans-serif;
     --displayFontSizes: 1.5rem;
+    --currentPlayerColor: var(--playerX);
 }
 
 body {
@@ -80,9 +81,14 @@ h1 {
 }
 
 .container.active .tile:hover::before {
-    content: 'X';
-    color: var(--playerX);
+    content: attr(data-hover);
+    color: var(--currentPlayerColor);
     font-family: var(--siteFont);
+}
+
+.container .tile.filled:hover::before {
+    content: '';
+    color: transparent;
 }
 
 
