@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
   // initialize variables for board, current player and game state
   let board = ['', '', '', '', '', '', '', '', ''];
   let currentPlayer = 'X';
-  let isGameActive = true;
 
   // Winning conditions
   const PX_WINS = "Player X Won!";
@@ -67,9 +66,6 @@ window.addEventListener('DOMContentLoaded', () => {
   */
 
   function placeMark(event) {
-
-    checkWin();
-
     let player = document.getElementById('display-player');
     const tile = event.target;
     if(tile.textContent === '') {
@@ -78,6 +74,20 @@ window.addEventListener('DOMContentLoaded', () => {
       tile.classList.add(currentPlayer.toLowerCase());
       tile.classList.add('filled');
       updateBoard(tile.getAttribute('index'), currentPlayer);
+
+
+      // check if the current player has won or if the game is a tie
+      if(checkWin(currentPlayer)) {
+        let announcer = document.getElementById('announcer');
+        announcer.setInnerHTML = currentPlayer + " won!";
+        announcer.style.display = "block";
+        console.log(currentPlayer + " won!");
+      }
+      else if(checkTie()) {
+        console.log("Tie!");
+      }
+
+      // update the current player and the hover symbol effect
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
       player.textContent = "Player " + currentPlayer + "\'s Turn";
       player.style.color = currentPlayer === 'X' ? 'var(--playerX)' : 'var(--playerO)';
@@ -85,12 +95,28 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function checkWin() {
-    console.log("checking win");
-    for(let i = 0; i < board.length; i++) {
-      console.log(board[i]);
+  // helper function which loops through the board array and checks if a tie has occured
+  function checkTie() {
+    if(board.every(tile => tile !== '')) {
+      return true;
     }
+    return false;
   }
+
+  function checkWin(player) {
+    // Iterate over all possible win conditions and check if any are met
+    for (let condition of winConditions) {
+        // Destructure the indexes for readability
+        let [a, b, c] = condition;
+
+        // Check if the board at these indexes has the same player symbol
+        if (board[a] === player && board[b] === player && board[c] === player) {
+            return true; // Win condition met
+        }
+    }
+    return false; // No win condition met
+}
+
 
 
   // quick helper method which updates the board array w/ the current players symbol
