@@ -20,18 +20,30 @@
     <div class="header">
         <h1>Tic-Tac-Toe!</h1>
     </div>
-
+     <!--
+        class buttons has the how to play btn 
+        and the play btn
+     -->
     <div class="buttons">
         <button id="how-to-play-btn">How to Play</button>
         <button id="play-btn">Play!</button>
     </div>
 
+
+    <!--
+        id instructions has the instructions on how to play
+        and the close btn
+    -->
     <div id="instructions">
         <h2>How to Play</h2>
         <p>Player X goes first. Click on any tile to place an X. Then, Player O will go. Click on any empty tile to place an O. The first player to get three in a row wins!</p>
         <button id="close-btn">Close</button>
     </div>
 
+    <!--
+        class scoreboard has the scoreboard
+        and the reset btn
+    -->
     <div class="scoreboard">
         <div>
           Player X's Wins: <span class="player-x-win-count">0</span>  
@@ -47,10 +59,17 @@
         
     </div>
 
+    <!--
+        class display-current-player has the current player
+    -->
     <div class="display-current-player">
         <span id="display-player">Player X's Turn</span>
     </div>
 
+    <!--
+        container represents the board with tiles with their
+        own index to mirror the array in the JS file
+    -->
     <div class="container">
         <div class="tile" index="0"></div>
         <div class="tile" index="1"></div>
@@ -63,6 +82,9 @@
         <div class="tile" index="8"></div>
     </div>
 
+    <!--
+        the various hidden announcer dialogs 
+    -->
     <div id="announcer">Player <span>X</span> Won!</div>
     <div id="announce-tie">It's a <span>tie!</span></div>
 
