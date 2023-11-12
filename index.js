@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const tiles = Array.from(document.querySelectorAll('.tile'));
   const playerDisplay = document.querySelector('.display-player');
   const resetButton = document.querySelector('#reset');
-  const announcer = document.querySelector('.announcer');
+  const announcer = document.getElementById('announcer');
   let gameStatus = false;
 
   // initialize variables for board, current player and game state
@@ -60,6 +60,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // set the game flag to true to show that the games begun
     gameStatus = true;
+  });
+
+  
+  // when the user clicks on the reset button, the game resets
+  document.getElementById('reset').addEventListener('click', () => {
+
+    // reset the board
+    board = ['', '', '', '', '', '', '', '', ''];
+    gameStatus = true;
+
+    // reset the tiles
+    tiles.forEach(tile => {
+      tile.classList.remove('x', 'o', 'filled');
+      tile.textContent = '';
+    });
+
+    // reset the announcer
+    announcer.style.display = 'none';
+
+    // reset the current player
+    currentPlayer = 'X';
+
+    // reset the player display
+    let player = document.getElementById('display-player');
+    player.textContent = "Player " + currentPlayer + "\'s Turn";
+    player.style.color = currentPlayer === 'X' ? 'var(--playerX)' : 'var(--playerO)';
+
+    // reset the hover effect
+    updateHoverSymbol();
   });
 
 
