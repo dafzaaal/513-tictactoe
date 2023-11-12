@@ -67,6 +67,9 @@ window.addEventListener('DOMContentLoaded', () => {
     */
 
     function placeMark(event) {
+
+      let player = document.getElementById('display-player');
+
       const tile = event.target;
       if(tile.textContent === '') {
         tile.textContent = currentPlayer;
@@ -74,8 +77,27 @@ window.addEventListener('DOMContentLoaded', () => {
         tile.classList.add(currentPlayer.toLowerCase());
         tile.classList.add('filled');
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        player.textContent = "Player " + currentPlayer + "\'s Turn";
+        player.style.color = currentPlayer === 'X' ? 'var(--playerX)' : 'var(--playerO)';
         updateHoverSymbol();
       }
+    }
+
+    function checkWin() {
+      let winner = false;
+      winConditions.forEach(condition => {
+        const tile1 = tiles[condition[0]];
+        const tile2 = tiles[condition[1]];
+        const tile3 = tiles[condition[2]];
+        if(tile1.textContent === tile2.textContent && tile2.textContent === tile3.textContent && tile1.textContent !== '') {
+          winner = true;
+          tile1.classList.add('win');
+          tile2.classList.add('win');
+          tile3.classList.add('win');
+        }
+      });
+
+      return winner;
     }
 
 
